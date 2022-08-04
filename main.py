@@ -31,6 +31,8 @@ def start(_,message):
     
 @bot.on_message(filters.command('help'))
 def help(_,message):
+    file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
+    bot.send_sticker(message.from_user.id, file_id)
     message.reply_text('💯 If you want, you can contact us using this format \n\n Ex:- /request Hello, I need a help')
     
 
