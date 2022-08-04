@@ -25,6 +25,10 @@ START_BUTTON = InlineKeyboardMarkup([[
                  ]]
                   )
 
+CLOSE_BUTTON = InlineKeyboardMarkup([[
+                 InlineKeyboardButton('ᴄʟᴏsᴇ' callback_data="cloce")
+                 ]]
+                 )
 
 def call_back_in_filter(data):
     return filters.create(
@@ -50,7 +54,13 @@ def start(_,message):
 def help(_,message):
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id)
-    message.reply_text('💯 If you want, you can contact us using this format \n\n Ex:- /request Hello, I need a help')
+    htext = "💯 If you want, you can contact us using this format \n\n Ex:- /request Hello, I need a help"
+    message.reply_text(
+        text=htext,
+        reply_markup=CLOSE_BUTTON,
+        disable_web_page_preview=True
+         )
+    )
     
 
 @bot.on_message(filters.command('request'))
