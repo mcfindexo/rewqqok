@@ -36,6 +36,8 @@ def help(_,message):
 
 @bot.on_message(filters.command('request'))
 def req(_,message):
+    file_id = "CAACAgUAAxkBAAEFdtRi69aHfk5jJjl8kpFacHP0PUclgQACfgQAAubFYVYNxaLEhZO7wCkE"
+    bot.send_sticker(message.from_user.id, file_id)
     message.reply('Your request have been sent ✔')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
