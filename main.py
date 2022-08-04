@@ -55,7 +55,7 @@ def botreq(_,query):
 
     if result[1] == "accept" and query.from_user.id == owner:
         bot.send_message(result[2] , "✔ You request has been approved")
-        query.message.edit('Request approved\n\n{}'.format(req_))
+        query.message.edit('😏 Request approved\n\n✉️ Massage :- {}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
         bot.send_message(result[2] , "✘ Sorry your request has been rejected")
