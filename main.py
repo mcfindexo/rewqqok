@@ -17,7 +17,8 @@ CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
 
 START_BUTTON = InlineKeyboardMarkup([[              
-                 InlineKeyboardButton('🍀 Owner 🍀', url="tg://resolve?domain=About_Myzonemy")
+                 InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url="tg://resolve?domain=About_Myzonemy"),
+                 InlineKeyboardButton("sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ", url="tg://need_update_for_some_feature/")
                  ],
                  [
                  InlineKeyboardButton("𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀", url="https://t.me/terbut_freecourses")
