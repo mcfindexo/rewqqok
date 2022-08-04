@@ -46,7 +46,7 @@ def req(_,message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
-    bot.send_message(int(CHAT_ID) , f'Requested by @{message.from_user.username}\n\n{req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
+    bot.send_message(int(CHAT_ID) , f'🐫Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
     
 
 @bot.on_callback_query(call_back_in_filter('request'))
