@@ -24,6 +24,8 @@ def call_back_in_filter(data):
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
+    file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
+    bot.send_sticker(message.from_user.id, file_id)
     message.reply_text('🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 Hour Active ✓ \n⚡️ Super Fast Response ✓ \n\nServer  : Heroku\nLibrary : Pyrogram\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖By Using Our Service You Must Agree To Our Privacy Policy 👀')
     
 @bot.on_message(filters.command('help'))
@@ -33,7 +35,7 @@ def help(_,message):
 
 @bot.on_message(filters.command('request'))
 def req(_,message):
-    message.reply('Your request have been sent')
+    message.reply('Your request have been sent ✔')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
     keyboard = []
@@ -47,12 +49,12 @@ def botreq(_,query):
     result = query.data.split(':')
 
     if result[1] == "accept" and query.from_user.id == owner:
-        bot.send_message(result[2] , "You request has been approved , we will start working on that bot soon")
+        bot.send_message(result[2] , "✔ You request has been approved")
         query.message.edit('Request approved\n\n{}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
-        bot.send_message(result[2] , "Sorry your request has been rejected")
-        query.message.edit('Rejected!')
+        bot.send_message(result[2] , "✘ Sorry your request has been rejected")
+        query.message.edit('✘ Rejected !')
     
     else:
         query.answer('You are not allowed')
