@@ -2,7 +2,8 @@ from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
 from pyrogram.types import Message
 import os
-
+from pyrogram.errors import *
+from pyrogram.errors.exceptions.bad_request_400 import *
 
 bot = Client(
     "notesbot",
@@ -14,6 +15,14 @@ bot = Client(
 
 CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
+
+START_BUTTON = InlineKeyboardMarkup([[              
+                 InlineKeyboardButton('🍀 Owner 🍀', url="tg://resolve?domain=About_Myzonemy")
+                 ],
+                 [
+                 InlineKeyboardButton("𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀", url="https://t.me/terbut_freecourses")
+                 ]]
+                  )
 
 
 def call_back_in_filter(data):
@@ -27,7 +36,14 @@ def call_back_in_filter(data):
 def start(_,message):
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     bot.send_sticker(message.from_user.id, file_id)
-    message.reply_text('🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 Hour Active ✓ \n⚡️ Super Fast Response ✓ \n\nServer  : Heroku\nLibrary : Pyrogram\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖By Using Our Service You Must Agree To Our Privacy Policy 👀')
+    text = "🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 Hour Active ✓ \n⚡️ Super Fast Response ✓ \n\nServer  : Heroku\nLibrary : Pyrogram\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖By Using Our Service You Must Agree To Our Privacy Policy 👀"
+    reply_markup = START_BUTTON
+    message.reply_text(
+        text=text,
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
+    )
     
 @bot.on_message(filters.command('help'))
 def help(_,message):
