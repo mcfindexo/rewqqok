@@ -2,6 +2,7 @@ from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
 from pyrogram.types import Message
 import os
+import speedtest
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 
@@ -64,6 +65,15 @@ def req(_,message):
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
     bot.send_message(int(CHAT_ID) , f'🐫Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
     
+@app.on_message(filters.command("speedtest") & filters.user(owner))
+def speedtest_(_,message):
+    speed = speedtest.Speedtest()
+    speed.get_best_server()
+    speed.download()
+    speed.upload()
+    speedtest_image = speed.results.share()
+
+    message.reply_photo(speedtest_image)
 
 @bot.on_callback_query(call_back_in_filter('request'))
 def botreq(_,query):
