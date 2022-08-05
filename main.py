@@ -57,16 +57,16 @@ def help(_,message):
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
-    message.reply_text('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
+    message.reply_text('**__Running speed test . . .__**')
     speed = speedtest.Speedtest()
     speed.get_best_server()
-    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__')
+    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__')
     speed.download()
-    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__')
+    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__')
     speed.upload()
-    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
+    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
     speedtest_image = speed.results.share()
-
+    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__\n\n**__Sharing SpeedTest Results__**')
     message.reply_photo(speedtest_image,
                         caption=HELPP_TEXT
                        )
