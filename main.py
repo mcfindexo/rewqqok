@@ -65,7 +65,7 @@ def req(_,message):
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
     bot.send_message(int(CHAT_ID) , f'🐫Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
     
-@app.on_message(filters.command("speedtest") & filters.user(owner))
+@bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
     speed = speedtest.Speedtest()
     speed.get_best_server()
