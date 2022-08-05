@@ -102,6 +102,10 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
+@bot.on_message(filters.private & filters.command(["about"]))
+def about(_,message):
+	message.reply_text("░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆\n░███████████████████████\n░▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓◤\n╬▀░▐▓▓▓▓▓▓▌▀█░░░█▀░\n▒░░▓▓▓▓▓▓█▄▄▄▄▄█▀╬░\n░░█▓▓▓▓▓▌░▒▒▒▒▒▒▒▒▒\n░▐█▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒\n░▐██████▌╬░▒▒▒▒▒▒▒▒\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n➖➖➖➖➖➖➖➖➖➖\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n➖➖➖➖➖➖➖➖➖➖\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+    
 @bot.on_message(filters.regex(pattern="OWNER"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
