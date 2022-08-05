@@ -106,6 +106,6 @@ def botreq(_,query):
 @bot.on_callback_query()
 async def semdd(_, query):
     if query.data == "cloce":
-        await update.message.delete()
+        await query.message.delete()
         
 bot.run()
