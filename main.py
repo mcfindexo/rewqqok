@@ -89,7 +89,7 @@ def speedtest_(_,message):
 
 @bot.on_message(filters.regex(pattern="OWNER"))   
 def startprivate(_,message):
-     bot.send_chat_action(chat_id, enums.ChatAction.TYPING)
+     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
      bot.send_sticker(message.chat.id, random.choice(OWNER_STICKER),reply_markup=OWNER_BTN)
     
 @bot.on_message(filters.command('request'))
