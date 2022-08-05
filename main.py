@@ -5,6 +5,7 @@ from typing import List, Any
 from pyrogram.types import Message
 import os
 import asyncio
+from asyncio import *
 import speedtest
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
