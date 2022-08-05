@@ -1,5 +1,7 @@
 from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton , InlineKeyboardMarkup
+from pyrogram.types.bots_and_keyboards import callback_game
+from typing import List, Any
 from pyrogram.types import Message
 import os
 import speedtest
