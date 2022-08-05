@@ -25,11 +25,6 @@ START_BUTTON = InlineKeyboardMarkup([[
                  ]]
                   )
 
-CLOSE_BUTTON = InlineKeyboardMarkup([[
-                 InlineKeyboardButton('ᴄʟᴏsᴇ' callback_data="cloce")
-                 ]]
-                 )
-
 def call_back_in_filter(data):
     return filters.create(
         lambda flt, _, query: flt.data in query.data,
