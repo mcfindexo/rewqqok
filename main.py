@@ -62,6 +62,7 @@ def start(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     bot.send_sticker(message.from_user.id, file_id)
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
     reply_markup = START_BUTTON
     message.reply_text(
@@ -76,6 +77,7 @@ def help(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id)
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     message.reply_text('**💯 If you want, you can contact us using this format** \n\n Ex:-\n `/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
@@ -100,6 +102,7 @@ def req(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgUAAxkBAAEFdtRi69aHfk5jJjl8kpFacHP0PUclgQACfgQAAubFYVYNxaLEhZO7wCkE"
     bot.send_sticker(message.from_user.id, file_id)
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     message.reply('Your request have been sent ✔')
     global req_
     req_ = message.text.replace(message.text.split(' ')[0] , '')
@@ -113,10 +116,12 @@ def botreq(_,query):
     result = query.data.split(':')
 
     if result[1] == "accept" and query.from_user.id == owner:
+        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
         bot.send_message(result[2] , '✔ You request has been approved\n\n📨 Your Massage is :- `{}`'.format(req_))
         query.message.edit('😏 Request approved\n\n✉️ Massage :- {}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
+        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
         bot.send_message(result[2] , "✘ Sorry your request has been rejected")
         query.message.edit('✘ Rejected !')
     
