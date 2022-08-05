@@ -128,17 +128,12 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
-@bot.on_message(filters.private & filters.command(["about"]))
-def about(_,message):
-	bot.send_photo(message.chat.id,
-                       "https://telegra.ph/file/0fd383da4878fc721f7f9.jpg",
-                       caption=ABOUT_TXT,
-                       reply_markup=InlineKeyboardMarkup([[
-                           InlineKeyboardButton(
-                               "𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀",
-                               url="https://t.me/terbut_freecourses")
-                       ]]))
     
+@bot.on_message(filters.regex(pattern="𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"))   
+def startprivate(_,message):
+     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+     bot.send_sticker(message.chat.id, random.choice(OWNER_STICKER),reply_markup=OWNER_BTN)
+	
 @bot.on_message(filters.regex(pattern="OWNER"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
