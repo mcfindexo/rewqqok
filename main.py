@@ -74,7 +74,7 @@ def speedtest_(_,message):
     speed.download()
     speed.upload()
     speedtest_image = speed.results.share()
-    result = test.results.dict()
+    result = speed.results.dict()
     message.reply_photo(speedtest_image,
                         caption=HELPP_TEXT
                        )
