@@ -89,11 +89,10 @@ def speedtest_(_,message):
 **__Latency:__** {result['server']['latency']}  
 **__Ping:__** {result['ping']}"""
     
-    message.reply_photo(chat_id=message.chat.id,
-                        speedtest_image,
-                        caption=output
+    message.reply_photo(
+        chat_id=message.chat.id, photo=speedtest_image, caption=output
     )
-
+    
 @bot.on_message(filters.command('request'))
 def req(_,message):
     file_id = "CAACAgUAAxkBAAEFdtRi69aHfk5jJjl8kpFacHP0PUclgQACfgQAAubFYVYNxaLEhZO7wCkE"
