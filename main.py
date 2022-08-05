@@ -80,14 +80,6 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
-@Client.on_message(filters.command("restart"))
-async def restart_me(bot, message):
-    if message.from_user.id not in AUTH_USERS:
-        await message.delete()
-        return
-    herokuHelper = HerokuHelper(HEROKU_APP_NAME, HEROKU_API_KEY)
-    await message.reply_text("`App is Restarting. This is May Take Upto 3Min.`", quote=True)
-    herokuHelper.restart()
     
 @bot.on_message(filters.command('request'))
 def req(_,message):
@@ -99,14 +91,14 @@ def req(_,message):
     keyboard = []
     keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
-    bot.send_message(int(CHAT_ID) , f'🐫Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
+    bot.send_message(int(CHAT_ID) , f'🐫 Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
 
 @bot.on_callback_query(call_back_in_filter('request'))
 def botreq(_,query):
     result = query.data.split(':')
 
     if result[1] == "accept" and query.from_user.id == owner:
-        bot.send_message(result[2] , "✔ You request has been approved")
+        bot.send_message(result[2] , '✔ You request has been approved\n\n📨 Your Massage is :- ` {} `'.format(req_))
         query.message.edit('😏 Request approved\n\n✉️ Massage :- {}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
