@@ -116,12 +116,10 @@ def botreq(_,query):
     result = query.data.split(':')
 
     if result[1] == "accept" and query.from_user.id == owner:
-        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
         bot.send_message(result[2] , '✔ You request has been approved\n\n📨 Your Massage is :- `{}`'.format(req_))
         query.message.edit('😏 Request approved\n\n✉️ Massage :- {}'.format(req_))
 
     elif result[1] == "reject" and query.from_user.id == owner:
-        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
         bot.send_message(result[2] , "✘ Sorry your request has been rejected")
         query.message.edit('✘ Rejected !')
     
