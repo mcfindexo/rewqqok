@@ -51,7 +51,16 @@ def help(_,message):
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id)
     message.reply_text('💯 If you want, you can contact us using this format \n\n Ex:- /request Hello, I need a help')
-    
+
+@bot.on_message(filters.command("speedtest"))
+def speedtest_(_,message):
+    speed = speedtest.Speedtest()
+    speed.get_best_server()
+    speed.download()
+    speed.upload()
+    speedtest_image = speed.results.share()
+
+    message.reply_photo(speedtest_image)
 
 @bot.on_message(filters.command('request'))
 def req(_,message):
@@ -64,16 +73,6 @@ def req(_,message):
     keyboard.append([InlineKeyboardButton("✅ Accept" , callback_data=f"request:accept:{message.from_user.id}")])
     keyboard.append([InlineKeyboardButton("❌ Reject" , callback_data=f'request:reject:{message.from_user.id}')])
     bot.send_message(int(CHAT_ID) , f'🐫Requested by @{message.from_user.username}\n\n✉️ Massage :- {req_}' , reply_markup=InlineKeyboardMarkup(keyboard))
-    
-@bot.on_message(filters.command("speedtest"))
-def speedtest_(_,message):
-    speed = speedtest.Speedtest()
-    speed.get_best_server()
-    speed.download()
-    speed.upload()
-    speedtest_image = speed.results.share()
-
-    message.reply_photo(speedtest_image)
 
 @bot.on_callback_query(call_back_in_filter('request'))
 def botreq(_,query):
