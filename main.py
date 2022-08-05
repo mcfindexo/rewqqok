@@ -59,6 +59,7 @@ def call_back_in_filter(data):
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     bot.send_sticker(message.from_user.id, file_id)
     text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
@@ -72,12 +73,14 @@ def start(_,message):
     
 @bot.on_message(filters.command('help'))
 def help(_,message):
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id)
     message.reply_text('**💯 If you want, you can contact us using this format** \n\n Ex:-\n `/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     message.reply_text('**__Running speed test . . .__**')
     speed = speedtest.Speedtest()
     speed.get_best_server()
@@ -94,6 +97,7 @@ def startprivate(_,message):
     
 @bot.on_message(filters.command('request'))
 def req(_,message):
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgUAAxkBAAEFdtRi69aHfk5jJjl8kpFacHP0PUclgQACfgQAAubFYVYNxaLEhZO7wCkE"
     bot.send_sticker(message.from_user.id, file_id)
     message.reply('Your request have been sent ✔')
