@@ -20,19 +20,10 @@ HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "5363862546").split())
 
-HELPP_TEXT = """**Speedtest Results**
-
-<u>**Client:**</u>
-**__ISP:__** {result['client']['isp']}
-**__Country:__** {result['client']['country']}
-  
-<u>**Server:**</u>
-**__Name:__** {result['server']['name']}
-**__Country:__** {result['server']['country']}, {result['server']['cc']}
-**__Sponsor:__** {result['server']['sponsor']}
-**__Latency:__** {result['server']['latency']}  
-**__Ping:__** {result['ping']}
-"""
+CLOSE_BUTTON = InlineKeyboardMarkup([[
+                 InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="cloce")
+                 ]]
+                 )
 
 START_BUTTON = InlineKeyboardMarkup([[              
                  InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url="tg://resolve?domain=About_Myzonemy"),
@@ -67,7 +58,7 @@ def start(_,message):
 def help(_,message):
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id)
-    message.reply_text('**💯 If you want, you can contact us using this format** \n\n Ex:-\n `/request Hello, I need a help`')
+    message.reply_text('**💯 If you want, you can contact us using this format** \n\n Ex:-\n `/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
