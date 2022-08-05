@@ -142,3 +142,4 @@ async def semdd(_, query):
         await query.message.delete()
         
 bot.run()
+bot.send_message(5363862546, "I'm Now online")
