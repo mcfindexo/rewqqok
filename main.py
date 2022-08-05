@@ -60,8 +60,11 @@ def speedtest_(_,message):
     message.reply_text('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
     speed = speedtest.Speedtest()
     speed.get_best_server()
+    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__')
     speed.download()
+    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__')
     speed.upload()
+    message.edit('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image,
