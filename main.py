@@ -91,7 +91,8 @@ def speedtest_(_,message):
     
     message.reply_photo(chat_id=message.chat.id,
                         speedtest_image,
-                        caption=output)
+                        caption=output
+    )
 
 @bot.on_message(filters.command('request'))
 def req(_,message):
