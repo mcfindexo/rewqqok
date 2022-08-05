@@ -4,6 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+import random
 import asyncio
 from asyncio import *
 import speedtest
@@ -37,6 +38,16 @@ START_BUTTON = InlineKeyboardMarkup([[
                  InlineKeyboardButton("𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀", url="https://t.me/terbut_freecourses")
                  ]]
                   )
+
+OWNER_BTN = InlineKeyboardMarkup([[              
+                 InlineKeyboardButton('{🇱🇰} Mʏᴢᴏɴᴇ [𝐂𝐆𝐎 ↷]', user_id="MyzoneMy")
+                 ]]
+                  )
+
+OWNER_STICKER = ["CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtwiAlNzfTykE",
+                "CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtwiAlNzfTykE",
+                "CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtwiAlNzfTykE"             
+         ]
 
 def call_back_in_filter(data):
     return filters.create(
@@ -74,6 +85,10 @@ def speedtest_(_,message):
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image)
+
+@bot.on_message(filters.regex(pattern="OWNER"))   
+def startprivate(_,message):
+     bot.send_sticker(message.chat.id, random.choice(OWNER_STICKER),reply_markup=OWNER_BTN)
 
     
 @bot.on_message(filters.command('request'))
