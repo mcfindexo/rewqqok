@@ -17,7 +17,8 @@ bot = Client(
 CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
 
-HELPP_TEXT = """Speedtest Results"""
+HELPP_TEXT = """**Speedtest Results**
+"""
 
 START_BUTTON = InlineKeyboardMarkup([[              
                  InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url="tg://resolve?domain=About_Myzonemy"),
@@ -56,6 +57,7 @@ def help(_,message):
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
+    message.reply_text('__Running speed test . . .__ \n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
     speed = speedtest.Speedtest()
     speed.get_best_server()
     speed.download()
