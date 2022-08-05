@@ -4,6 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+import asyncio
 import speedtest
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
