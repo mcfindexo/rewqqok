@@ -132,11 +132,7 @@ def speedtest_(_,message):
 @bot.on_message(filters.regex(pattern="𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-     bot.send_sticker(message.chat.id, 
-		     text=ABOUT_TXT
-		     disable_web_page_preview=True,
-		     quote=True
-		     )
+     message.reply_text('**>> We work hard to bring stuff for YOU for FREE! Now you can help us in return for FREE!**', reply_markup=CLOSE_BUTTON)
 	
 @bot.on_message(filters.regex(pattern="OWNER"))   
 def startprivate(_,message):
