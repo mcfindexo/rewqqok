@@ -7,6 +7,7 @@ import os
 import random
 import asyncio
 from pyrogram import enums
+from pyrogram.types import *
 from asyncio import *
 import speedtest
 from pyrogram.errors import *
