@@ -16,6 +16,9 @@ bot = Client(
 
 CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
+HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
+HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
+AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "5363862546").split())
 
 HELPP_TEXT = """**Speedtest Results**
 
@@ -76,6 +79,15 @@ def speedtest_(_,message):
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image)
+
+@Client.on_message(filters.command("restart"))
+async def restart_me(bot, message):
+    if message.from_user.id not in AUTH_USERS:
+        await message.delete()
+        return
+    herokuHelper = HerokuHelper(HEROKU_APP_NAME, HEROKU_API_KEY)
+    await message.reply_text("`App is Restarting. This is May Take Upto 3Min.`", quote=True)
+    herokuHelper.restart()
     
 @bot.on_message(filters.command('request'))
 def req(_,message):
