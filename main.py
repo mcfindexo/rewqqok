@@ -60,32 +60,7 @@ OWNER_STICKER = ["CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtw
                 "CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtwiAlNzfTykE"             
          ]
 
-ABOUT_TXT = """
-**░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆
-░███████████████████████
-░▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓◤
-╬▀░▐▓▓▓▓▓▓▌▀█░░░█▀░
-▒░░▓▓▓▓▓▓█▄▄▄▄▄█▀╬░
-░░█▓▓▓▓▓▌░▒▒▒▒▒▒▒▒▒
-░▐█▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒
-░▐██████▌╬░▒▒▒▒▒▒▒▒
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-➖➖➖➖➖➖➖➖➖➖
-☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy
-➖➖➖➖➖➖➖➖➖➖
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-
-╭━━━━━━━━━━━━━━━━━━━━━━━➣
-┣⪼ 𝙼𝚈 𝙽𝙰𝙼𝙴 : 𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀
-┣⪼ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁 : {🇱🇰} Mʏᴢᴏɴᴇ [𝐂𝐆𝐎 ↷]
-┣⪼ 𝙳𝙴𝚅𝙴𝙻𝙾𝙿𝙴𝚁 : @Myzonemy
-┣⪼ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈 : Pyrogram
-┣⪼ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴 : Python3
-┣⪼ 𝙼𝚈 𝚂𝙴𝚁𝚅𝙴𝚁 : Heroku         
-╰━━━━━━━━━━━━━━━━━━━━━━━➣**
-"""
 def call_back_in_filter(data):
     return filters.create(
         lambda flt, _, query: flt.data in query.data,
