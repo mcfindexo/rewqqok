@@ -40,6 +40,15 @@ START_BUTTON = InlineKeyboardMarkup([[
                  ]]
                   )
 
+start_menu = ReplyKeyboardMarkup(
+      [
+            ["OWNER"],
+            ["𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"]
+           
+        ],
+        resize_keyboard=True  # Make the keyboard smaller
+    )
+
 OWNER_BTN = InlineKeyboardMarkup([[              
                  InlineKeyboardButton('{🇱🇰} Mʏᴢᴏɴᴇ [𝐂𝐆𝐎 ↷]', user_id="MyzoneMy")
                  ]]
@@ -76,7 +85,7 @@ def start(_,message):
 def help(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
-    bot.send_sticker(message.from_user.id, file_id)
+    bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     message.reply_text('**💯 If you want, you can contact us using this format** \n\n Ex:-\n `/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
 
