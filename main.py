@@ -18,6 +18,17 @@ CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
 
 HELPP_TEXT = """**Speedtest Results**
+
+<u>**Client:**</u>
+**__ISP:__** {result['client']['isp']}
+**__Country:__** {result['client']['country']}
+  
+<u>**Server:**</u>
+**__Name:__** {result['server']['name']}
+**__Country:__** {result['server']['country']}, {result['server']['cc']}
+**__Sponsor:__** {result['server']['sponsor']}
+**__Latency:__** {result['server']['latency']}  
+**__Ping:__** {result['ping']}
 """
 
 START_BUTTON = InlineKeyboardMarkup([[              
@@ -60,13 +71,10 @@ def speedtest_(_,message):
     message.reply_text('**__Running speed test . . .__**')
     speed = speedtest.Speedtest()
     speed.get_best_server()
-    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__')
     speed.download()
-    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__')
     speed.upload()
-    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__')
     speedtest_image = speed.results.share()
-    message.edit('**__Running speed test . . .__ **\n\n__Getting best server based on ping . . .__\n__Testing download speed . . .__\n__Testing upload speed . . .__\n\n**__Sharing SpeedTest Results__**')
+    result = test.results.dict()
     message.reply_photo(speedtest_image,
                         caption=HELPP_TEXT
                        )
