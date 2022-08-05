@@ -103,6 +103,10 @@ def botreq(_,query):
     
     else:
         query.answer('You are not allowed')
-
-
+        
+@bot.on_callback_query()
+async def semdd(_, query):
+    if update.data == "cloce":
+        await update.message.delete()
+        
 bot.run()
