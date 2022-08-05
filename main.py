@@ -74,24 +74,8 @@ def speedtest_(_,message):
     speed.download()
     speed.upload()
     speedtest_image = speed.results.share()
-    result = speed.results.dict()
-    
-    output = f"""**Speedtest Results**
-    
-<u>**Client:**</u>
-**__ISP:__** {result['client']['isp']}
-**__Country:__** {result['client']['country']}
-  
-<u>**Server:**</u>
-**__Name:__** {result['server']['name']}
-**__Country:__** {result['server']['country']}, {result['server']['cc']}
-**__Sponsor:__** {result['server']['sponsor']}
-**__Latency:__** {result['server']['latency']}  
-**__Ping:__** {result['ping']}"""
-    
-    message.reply_photo(
-        chat_id=message.chat.id, photo=speedtest_image, caption=output
-    )
+
+    message.reply_photo(speedtest_image)
     
 @bot.on_message(filters.command('request'))
 def req(_,message):
