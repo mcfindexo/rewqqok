@@ -17,6 +17,8 @@ bot = Client(
 CHAT_ID = os.environ.get('CHAT_ID')
 owner = int(os.environ.get('OWNER'))
 
+HELPP_TEXT = """Speedtest Results"""
+
 START_BUTTON = InlineKeyboardMarkup([[              
                  InlineKeyboardButton('Dᴇᴠᴇʟᴏᴘᴇʀ', url="tg://resolve?domain=About_Myzonemy"),
                  InlineKeyboardButton("sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ", url="tg://need_update_for_some_feature/")
@@ -60,7 +62,9 @@ def speedtest_(_,message):
     speed.upload()
     speedtest_image = speed.results.share()
 
-    message.reply_photo(speedtest_image)
+    message.reply_photo(speedtest_image,
+                        caption=HELPP_TEXT
+                       )
 
 @bot.on_message(filters.command('request'))
 def req(_,message):
