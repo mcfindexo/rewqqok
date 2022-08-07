@@ -115,7 +115,7 @@ def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
      bot.send_sticker(message.chat.id, random.choice(OWNER_STICKER),reply_markup=OWNER_BTN)
   
-@client.on_chat_join_request(filters.channel)
+@bot.on_chat_join_request(filters.channel)
 async def jn(_,message):
     try:
         await bot.approve_chat_join_request(m.chat.id, m.from_user.id)
