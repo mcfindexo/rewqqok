@@ -6,6 +6,7 @@ from pyrogram.types import Message
 import os
 import random
 import asyncio
+from logging import basicConfig, INFO
 from pyrogram import enums
 from pyrogram.types import *
 from asyncio import *
