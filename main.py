@@ -118,7 +118,7 @@ def startprivate(_,message):
 @client.on_chat_join_request(filters.channel)
 async def jn(_,message):
     try:
-        await client.approve_chat_join_request(m.chat.id, m.from_user.id)
+        await bot.approve_chat_join_request(m.chat.id, m.from_user.id)
     except FloodWait as fd:
         await sleep(fd.x + 2)
     except BaseException:
