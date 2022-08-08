@@ -12,6 +12,7 @@ from pyrogram import enums
 from pyrogram.types import *
 from asyncio import *
 import speedtest
+from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 
