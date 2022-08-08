@@ -117,13 +117,6 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
-@bot.on_message(filters.command(["ping"]))
-async def ping(_,message):
-    first = datetime.now()
-    second = datetime.now()
-    await message.reply_text(message.chat.id,
-			 text="**Pong!** `{}ms`".format((second - first).microseconds / 1000)
-			)
     
 @bot.on_message(filters.regex(pattern="𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"))   
 def startprivate(_,message):
