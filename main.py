@@ -7,6 +7,9 @@ import os
 from os import environ
 import wget
 import random
+from json import dumps as jdumps
+from csv import writer
+from re import compile
 import asyncio
 from aiohttp import ClientSession
 from urllib.parse import quote
