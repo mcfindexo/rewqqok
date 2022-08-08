@@ -118,10 +118,10 @@ def speedtest_(_,message):
     message.reply_photo(speedtest_image)
 
 @bot.on_message(filters.command(["ping"]))
-async def ping(_, update):
+async def ping(_,message):
     first = datetime.now()
     second = datetime.now()
-    await bot.reply_text(message.chat.id,
+    await message.reply_text(message.chat.id,
 			 text="**Pong!** `{}ms`".format((second - first).microseconds / 1000)
 			)
     
