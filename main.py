@@ -4,9 +4,13 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+from os import environ
 import wget
 import random
 import asyncio
+from aiohttp import ClientSession
+from urllib.parse import quote
+from random import choice
 from logging import basicConfig, INFO
 from pyrogram import enums
 from pyrogram.types import *
@@ -249,7 +253,14 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
-    
+
+@bot.on_message(~filters.bot & filters.text & filters.command(["account"]))
+async def command_account(_,message):
+    if message.from_user.id in users:
+        return await message.reply("You already requested an account. Wait, please.")
+    users[message.from_user.id] = User(message.from_user.id)
+    return await message.reply("Send the password you want to set for your account (min. 8 characters)")
+
 @bot.on_message(filters.regex(pattern="𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
@@ -268,6 +279,18 @@ async def jn(_,message):
         await sleep(fd.x + 2)
     except BaseException:
         pass
+
+@bot.on_message(~filters.bot & filters.text)
+async def message_account(_,message):
+    if message.from_user.id not in users or not message.text:
+        return
+    if users[message.from_user.id].state != 0:
+        return
+    if len(message.text.replace("\"", "").replace(" ", "")) < 8:
+        return
+    users[message.from_user.id].setPassword(message.text.replace("\\", "").replace("\"", "").replace(" ", "").replace("'", ""))
+    msg = await message.reply(f"...")
+    await users[message.from_user.id].register(msg.id, message.from_user.id)
 	
 @bot.on_message(filters.command('request'))
 def req(_,message):
