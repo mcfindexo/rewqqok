@@ -4,6 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+import wget
 import random
 import asyncio
 from logging import basicConfig, INFO
