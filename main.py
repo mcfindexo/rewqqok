@@ -115,7 +115,7 @@ def speedtest_(_,message):
 
     message.reply_photo(speedtest_image)
 
-@bot.on_message(filters.command("speedtest") & ~filters.edited)
+@bot.on_message(filters.command("tspeedtest"))
 async def statsguwid(_, message):
     m = await message.reply_text("Running Speed test")
     try:
