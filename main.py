@@ -111,7 +111,7 @@ def help(_,message):
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nEX:- **\n`/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
+    message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
