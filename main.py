@@ -256,7 +256,5 @@ def callbackk(_, query):
         try:
             query.message.edit(f"Today's All Cupon Codes\n\n{mm}", reply_markup==UDEMYA_BUTTON)
             query.answer("Refreshed!")
-		
-print("[@Myzonemy] Deployed Successfully !")       
 
 bot.run()
