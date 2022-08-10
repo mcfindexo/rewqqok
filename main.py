@@ -246,7 +246,7 @@ async def semdd(_, query):
     if query.data == "cloce":
         await query.message.delete()
         
-@bot.on_callback_query(call_back_in_filter("fk"))
+@bot.on_callback_query()
 def callbackk(_, query):
     if query.data == "fk":
         mm = udemyokq()
@@ -254,4 +254,9 @@ def callbackk(_, query):
             query.message.edit(f"Today's All Cupon Codes\n\n{mm}", reply_markup==UDEMYA_BUTTON)
             query.answer("Refreshed!")
 
-bot.run()
+
+
+
+bot.start()
+LOGGER.info("Sithija's assistant is online")
+idle()
