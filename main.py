@@ -210,7 +210,7 @@ async def jn(_,message):
 @bot.on_message(filters.command('udemya'))
 def lates(_, message):
     mm = udemyokq()
-    message.reply_text(f"Today's All Cupon Codes\n\n{mm}", reply_markup=UDEMYA_BUTTON)
+    message.reply_text(f"Today's All Cupon Codes\n\n{mm}")
 	
 @bot.on_message(filters.command('request'))
 def req(_,message):
@@ -246,4 +246,25 @@ async def semdd(_, query):
     if query.data == "cloce":
         await query.message.delete()
         
-bot.start()
+
+print("""
+░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆
+░███████████████████████
+░▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓◤
+╬▀░▐▓▓▓▓▓▓▌▀█░░░█▀░
+▒░░▓▓▓▓▓▓█▄▄▄▄▄█▀╬░
+░░█▓▓▓▓▓▌░▒▒▒▒▒▒▒▒▒
+░▐█▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒
+░▐██████▌╬░▒▒▒▒▒▒▒▒
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+➖➖➖➖➖➖➖➖➖➖
+☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy
+➖➖➖➖➖➖➖➖➖➖
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+""")
+
+
+
+print("[@Myzonemy] Deployed Successfully !")       
+
+bot.run()
