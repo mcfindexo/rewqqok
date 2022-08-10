@@ -19,6 +19,7 @@ from pyrogram import enums
 from pyrogram.types import *
 from asyncio import *
 import speedtest
+from requests import get
 from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
@@ -138,7 +139,27 @@ def speedtest_(_,message):
     m.edit("🚑")
     message.reply_photo(speedtest_image)
 
+@bot.on_message(filters.command('github'))
+def git(_,message):
+    user = message.text.split(' ')[1]
+    res = get(f'https://api.github.com/users/{user}').json()
+    data = f"""**Name**: {res['name']}
+**UserName**: {res['login']}
+**Link**: [{res['login']}]({res['html_url']})
+**Bio**: {res['bio']}
+**Company**: {res['company']}
+**Location**: {res['location']}
+**Public Repos: {res['public_repos']}
+**Followers**: {res['followers']}
+**Following**: {res['following']}
+"""
+    with open(f"{user}.jpg", "wb") as f:
+        kek = get(res['avatar_url']).content
+        f.write(kek)
 
+    message.reply_photo(f"{user}.jpg", caption=data)
+    os.remove(f"{user}.jpg")
+	
 @bot.on_message(filters.regex(pattern="ᴛᴇʀʙᴜᴛ ғʀᴇᴇ ᴄᴏᴜʀᴤᴇᴤ"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
