@@ -178,6 +178,30 @@ def udemyokt():
 
     return t
 
+def udemyokr():
+	
+    url = 'https://api.safone.tech/udemy/coursevania?page=1&limit=50'
+    res = get(url).json()
+
+    r = None
+    for d in res['results']:
+        title = d['title']
+        link = d['link']
+        try:
+            aired = bool(d['aired'])
+            title = f"**➤ [{title}]({d['link']})**\n" if not aired else f"**~~➤ [{title}]({d['link']})~~**\n"
+        except KeyError:
+            title = f"**➤ [{title}]({d['link']})**\n"
+        data = f"{title}"
+
+        if r:
+            r = f"{r}\n{data}"
+
+        else:
+            r = data
+
+    return r
+
 def bytes(size: float) -> str:
     """humanize size"""
     if not size:
