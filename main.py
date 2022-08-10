@@ -25,8 +25,6 @@ from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 
-uvloop.install()
-
 bot = Client(
     "notesbot",
     api_id=os.environ['API_ID'],
@@ -273,4 +271,5 @@ print("""
 
 print("[@Myzonemy] Deployed Successfully !")       
 
+uvloop.install()
 bot.run()
