@@ -87,7 +87,7 @@ def udemyokq():
     url = 'https://api.safone.tech/udemy/discount?page=1&limit=50'
     res = get(url).json()
 
-    k = None
+    q = None
     for x in res['results']:
         title = x['title']
         link = x['link']
@@ -98,61 +98,61 @@ def udemyokq():
             title = f"**➤ [{title}]({x['link']})**\n"
         data = f"{title}"
 
-        if k:
-            k = f"{k}\n{data}"
+        if q:
+            q = f"{k}\n{data}"
 
         else:
-            k = data
+            q = data
 
-    return k
+    return q
 
 def udemyokb():
 	
     url = 'https://api.safone.tech/udemy/freebies?page=1&limit=50'
     res = get(url).json()
 
-    k = None
+    b = None
     for x in res['results']:
         title = x['title']
         link = x['link']
         try:
             aired = bool(x['aired'])
-            title = f"**➤ [{title}]({x['link']})**\n" if not aired else f"**~~➤ [{title}]({x['link']})~~**\n"
+            title = f"**➤ [{title}]({o['link']})**\n" if not aired else f"**~~➤ [{title}]({o['link']})~~**\n"
         except KeyError:
-            title = f"**➤ [{title}]({x['link']})**\n"
+            title = f"**➤ [{title}]({o['link']})**\n"
         data = f"{title}"
 
-        if k:
-            k = f"{k}\n{data}"
+        if b:
+            b = f"{b}\n{data}"
 
         else:
-            k = data
+            b = data
 
-    return 
+    return b
 
 def udemyokc():
 	
     url = 'https://api.safone.tech/udemy/coursevania?page=1&limit=50'
     res = get(url).json()
 
-    k = None
+    c = None
     for x in res['results']:
-        title = x['title']
-        link = x['link']
+        title = v['title']
+        link = v['link']
         try:
-            aired = bool(x['aired'])
-            title = f"**➤ [{title}]({x['link']})**\n" if not aired else f"**~~➤ [{title}]({x['link']})~~**\n"
+            aired = bool(v['aired'])
+            title = f"**➤ [{title}]({v['link']})**\n" if not aired else f"**~~➤ [{title}]({v['link']})~~**\n"
         except KeyError:
-            title = f"**➤ [{title}]({x['link']})**\n"
+            title = f"**➤ [{title}]({v['link']})**\n"
         data = f"{title}"
 
-        if k:
-            k = f"{k}\n{data}"
+        if c:
+            c = f"{c}\n{data}"
 
         else:
-            k = data
+            c = data
 
-    return 
+    return c
 
 def bytes(size: float) -> str:
     """humanize size"""
