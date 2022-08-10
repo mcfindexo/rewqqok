@@ -127,7 +127,7 @@ def speedtest_(_,message):
     m.edit("Runing Speedtest ........")
     speedtest_image = speed.results.share()
     m.edit("Wait ........")
-    m.edit("🚀")
+    m.edit("🚑")
     message.reply_photo(speedtest_image)
 
 
