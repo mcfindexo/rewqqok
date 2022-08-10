@@ -4,6 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+import uvloop
 from os import environ
 import wget
 import random
@@ -24,7 +25,7 @@ from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 
-_re = compile(r"https{0,1}:\/\/mega.nz\/#confirm[a-zA-Z0-9_-]{80,512}")
+uvloop.install()
 
 bot = Client(
     "notesbot",
