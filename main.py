@@ -79,6 +79,30 @@ def call_back_in_filter(data):
         data=data
     )
 
+def udemyokq():
+	
+    url = 'https://api.safone.tech/udemy/discount?page=1&limit=50'
+    res = get(url).json()
+
+    k = None
+    for x in res['schedule']:
+        title = x['title']
+        time = x['time']
+        try:
+            aired = bool(x['aired'])
+            title = f"**[{title}]({x['link']})**" if not aired else f"**~~[{title}]({x['link']})~~**"
+        except KeyError:
+            title = f"**[{title}]({x['link']})**"
+        data = f"{title}"
+
+        if k:
+            k = f"{k}\n{data}"
+
+        else:
+            k = data
+
+    return k
+
 def bytes(size: float) -> str:
     """humanize size"""
     if not size:
