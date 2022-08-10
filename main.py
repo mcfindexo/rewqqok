@@ -73,6 +73,11 @@ OWNER_STICKER = ["CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtw
                 "CAACAgUAAxkBAAEFeKVi7KQ03IWzIsadwiDmClcqqR1VdAAC7QYAAgxtuFUmtwiAlNzfTykE"             
          ]
 
+UDEMYA_BUTTON = InlineKeyboardMarkup([[              
+                 InlineKeyboardButton("Refresh", callback_data="fk")
+                 ]]
+                  )
+
 def call_back_in_filter(data):
     return filters.create(
         lambda flt, _, query: flt.data in query.data,
@@ -205,10 +210,7 @@ async def jn(_,message):
 @bot.on_message(filters.command('udemya'))
 def lates(_, message):
     mm = udemyokq()
-    message.reply_text(f"Today's All Cupon Codes\n\n{mm}",
-                       reply_markup=InlineKeyboardMarkup([[
-                           InlineKeyboardButton("Refresh", callback_data="fk")
-                       ]]))
+    message.reply_text(f"Today's All Cupon Codes\n\n{mm}", reply_markup=UDEMYA_BUTTON)
 	
 @bot.on_message(filters.command('request'))
 def req(_,message):
