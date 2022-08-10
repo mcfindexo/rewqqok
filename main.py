@@ -126,7 +126,7 @@ def speedtest_(_,message):
     speed.upload()
     m.edit("Runing Speedtest ........")
     speedtest_image = speed.results.share()
-
+    m.message.delete()
     message.reply_photo(speedtest_image)
 
 
