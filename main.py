@@ -215,7 +215,8 @@ def lates(_, message):
     mm = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb.edit(f"Today's All Cupon Codes\n\n{mm}")
-	
+    bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
+
 @bot.on_message(filters.command('request'))
 def req(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
