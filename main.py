@@ -258,30 +258,30 @@ async def jn(_,message):
 def udemyq(_, message):
     message.reply_text("⚡️")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb = message.reply_text("**wait for result........**")
+    mb = message.reply_text("**🔎 Wait for result . . . . . .**")
     yq = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yq}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yq}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('udemyf'))
 def udemyb(_,message):
     message.reply_text("🐳")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb = message.reply_text("**wait for result........**")
+    mb = message.reply_text("**🔎 Wait for result . . . . . .**")
     yf = udemyokb()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yf}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yf}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('udemyc'))
 def udemyc(_,message):
     message.reply_text("🌴")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb = message.reply_text("**wait for result........**")
+    mb = message.reply_text("**🔎 Wait for result . . . . . .**")
     yc = udemyokc()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yc}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yc}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('request'))
