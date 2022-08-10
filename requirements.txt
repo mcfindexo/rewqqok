@@ -5,3 +5,4 @@ aiohttp[speedups]
 wget
 pymongo
 requests
+uvloop
