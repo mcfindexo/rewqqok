@@ -273,7 +273,7 @@ def udemyb(_, message):
     mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
-@bot.on_message(filters.command('udemyf'))
+@bot.on_message(filters.command('udemyc'))
 def udemyc(_, message):
     message.reply_text("🌴")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
