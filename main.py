@@ -253,34 +253,35 @@ async def jn(_,message):
         await sleep(fd.x + 2)
     except BaseException:
         pass	
+
 @bot.on_message(filters.command('udemya'))
 def udemyq(_, message):
     message.reply_text("⚡️")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("**wait for result........**")
-    mm = udemyokq()
+    yq = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yq}")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('udemyf'))
-def udemyb(_, message):
+def udemyb(_,message):
     message.reply_text("🐳")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("**wait for result........**")
-    mm = udemyokb()
+    yf = udemyokb()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yf}")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('udemyc'))
-def udemyc(_, message):
+def udemyc(_,message):
     message.reply_text("🌴")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("**wait for result........**")
-    mm = udemyokc()
+    yc = udemyokc()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{yc}")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('request'))
