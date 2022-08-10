@@ -4,7 +4,6 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
-import uvloop
 from os import environ
 import wget
 import random
@@ -271,5 +270,4 @@ print("""
 
 print("[@Myzonemy] Deployed Successfully !")       
 
-uvloop.install()
 bot.run()
