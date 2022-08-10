@@ -248,11 +248,8 @@ async def semdd(_, query):
         
 @bot.on_callback_query(call_back_in_filter("fk"))
 def callbackk(_, query):
-
     if query.data == "fk":
         mm = udemyokq()
-        time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
-
         try:
             query.message.edit(f"Today's All Cupon Codes\n\n{mm}", reply_markup==UDEMYA_BUTTON)
             query.answer("Refreshed!")
