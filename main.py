@@ -247,5 +247,3 @@ async def semdd(_, query):
         await query.message.delete()
         
 bot.start()
-LOGGER.info("Sithija's assistant is online")
-idle()
