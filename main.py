@@ -202,7 +202,14 @@ async def jn(_,message):
         await sleep(fd.x + 2)
     except BaseException:
         pass	
-
+@bot.on_message(filters.command('udemya'))
+def lates(_, message):
+    mm = udemyokq()
+    message.reply_text(f"Today's All Cupon Codes\n\n{mm}",
+                       reply_markup=InlineKeyboardMarkup([[
+                           InlineKeyboardButton("Refresh", callback_data="fk")
+                       ]]))
+	
 @bot.on_message(filters.command('request'))
 def req(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
@@ -237,6 +244,20 @@ async def semdd(_, query):
     if query.data == "cloce":
         await query.message.delete()
         
+@bot.on_callback_query(call_back_in_filter("fk"))
+def callbackk(_, query):
+
+    if query.data == "fk":
+        mm = udemyokq()
+        time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
+
+        try:
+            query.message.edit(f"Today's All Cupon Codes\n\n{mm}}",
+                               reply_markup=InlineKeyboardMarkup([[
+                                   InlineKeyboardButton("Refresh",
+                                                        callback_data="fk")
+                               ]]))
+            query.answer("Refreshed!")
 print("""
 ░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆
 ░███████████████████████
