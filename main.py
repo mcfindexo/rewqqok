@@ -116,6 +116,9 @@ def help(_,message):
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+print("""
+Running Speed test On My server
+""")
     m = message.reply("Runing Speedtest ..")
     speed = speedtest.Speedtest()
     m.edit("Get The best server")
