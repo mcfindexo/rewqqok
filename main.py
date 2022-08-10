@@ -209,12 +209,12 @@ async def jn(_,message):
         pass	
 @bot.on_message(filters.command('udemya'))
 def lates(_, message):
-    mm = udemyokq()
     message.reply_text("🔎")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("wait for result........")
+    mm = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    m.edit(f"Today's All Cupon Codes\n\n{mm}")
+    mb.edit(f"Today's All Cupon Codes\n\n{mm}")
 	
 @bot.on_message(filters.command('request'))
 def req(_,message):
