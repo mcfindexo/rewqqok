@@ -254,11 +254,7 @@ def callbackk(_, query):
         time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
 
         try:
-            query.message.edit(f"Today's All Cupon Codes\n\n{mm}}",
-                               reply_markup=InlineKeyboardMarkup([[
-                                   InlineKeyboardButton("Refresh",
-                                                        callback_data="fk")
-                               ]]))
+            query.message.edit((f"Today's All Cupon Codes\n\n{mm}", reply_markup=UDEMYA_BUTTON)
             query.answer("Refreshed!")
 print("""
 ░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆
