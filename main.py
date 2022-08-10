@@ -154,6 +154,30 @@ def udemyokc():
 
     return c
 
+def udemyokt():
+	
+    url = 'https://api.safone.tech/udemy/coursevania?page=1&limit=50'
+    res = get(url).json()
+
+    t = None
+    for b in res['results']:
+        title = b['title']
+        link = b['link']
+        try:
+            aired = bool(b['aired'])
+            title = f"**➤ [{title}]({b['link']})**\n" if not aired else f"**~~➤ [{title}]({b['link']})~~**\n"
+        except KeyError:
+            title = f"**➤ [{title}]({b['link']})**\n"
+        data = f"{title}"
+
+        if t:
+            t = f"{t}\n{data}"
+
+        else:
+            t = data
+
+    return t
+
 def bytes(size: float) -> str:
     """humanize size"""
     if not size:
@@ -282,6 +306,16 @@ def udemyc(_,message):
     yc = udemyokc()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yc}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
+
+@bot.on_message(filters.command('udemyt'))
+def udemyt(_,message):
+    message.reply_text("✨")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb = message.reply_text("**🔎 Wait for result . . . . . .**")
+    yt = udemyokt()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yt}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('request'))
