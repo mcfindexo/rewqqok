@@ -342,6 +342,16 @@ def udemyt(_,message):
     mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yt}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
+@bot.on_message(filters.command('udemyr'))
+def udemyr(_,message):
+    message.reply_text("🎨")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb = message.reply_text("**🔎 Wait for result . . . . . .**")
+    yr = udemyokr()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n{yr}\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
+
 @bot.on_message(filters.command('request'))
 def req(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
