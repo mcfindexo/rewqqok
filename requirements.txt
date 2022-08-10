@@ -4,3 +4,4 @@ speedtest-cli
 aiohttp[speedups]
 wget
 pymongo
+requests
