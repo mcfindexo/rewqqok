@@ -257,26 +257,6 @@ def callbackk(_, query):
             query.message.edit(f"Today's All Cupon Codes\n\n{mm}", reply_markup==UDEMYA_BUTTON)
             query.answer("Refreshed!")
 		
-		
-print("""
-░▐█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█▄☆
-░███████████████████████
-░▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓◤
-╬▀░▐▓▓▓▓▓▓▌▀█░░░█▀░
-▒░░▓▓▓▓▓▓█▄▄▄▄▄█▀╬░
-░░█▓▓▓▓▓▌░▒▒▒▒▒▒▒▒▒
-░▐█▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒
-░▐██████▌╬░▒▒▒▒▒▒▒▒
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-➖➖➖➖➖➖➖➖➖➖
-☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy
-➖➖➖➖➖➖➖➖➖➖
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-""")
-
-
-
 print("[@Myzonemy] Deployed Successfully !")       
 
 bot.run()
