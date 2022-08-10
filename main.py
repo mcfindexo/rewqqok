@@ -130,6 +130,30 @@ def udemyokb():
 
     return 
 
+def udemyokc():
+	
+    url = 'https://api.safone.tech/udemy/coursevania?page=1&limit=50'
+    res = get(url).json()
+
+    k = None
+    for x in res['results']:
+        title = x['title']
+        link = x['link']
+        try:
+            aired = bool(x['aired'])
+            title = f"**➤ [{title}]({x['link']})**\n" if not aired else f"**~~➤ [{title}]({x['link']})~~**\n"
+        except KeyError:
+            title = f"**➤ [{title}]({x['link']})**\n"
+        data = f"{title}"
+
+        if k:
+            k = f"{k}\n{data}"
+
+        else:
+            k = data
+
+    return 
+
 def bytes(size: float) -> str:
     """humanize size"""
     if not size:
@@ -230,7 +254,7 @@ async def jn(_,message):
     except BaseException:
         pass	
 @bot.on_message(filters.command('udemya'))
-def lates(_, message):
+def udemyq(_, message):
     message.reply_text("⚡️")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("**wait for result........**")
@@ -240,11 +264,21 @@ def lates(_, message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
 
 @bot.on_message(filters.command('udemyf'))
-def lates(_, message):
+def udemyb(_, message):
     message.reply_text("🐳")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb = message.reply_text("**wait for result........**")
-    mm = udemyokq()
+    mm = udemyokb()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
+
+@bot.on_message(filters.command('udemyf'))
+def udemyc(_, message):
+    message.reply_text("🌴")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    mb = message.reply_text("**wait for result........**")
+    mm = udemyokc()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     mb.edit(f"**Today's All Cupon Codes 🚀**\n\n{mm}")
     bot.send_chat_action(message.chat.id, enums.ChatAction.CANCEL)
