@@ -95,9 +95,9 @@ def udemyokq():
         link = x['link']
         try:
             aired = bool(x['aired'])
-            title = f"**➤ [{title}]({x['link']})**\n\n" if not aired else f"**~~➤ [{title}]({x['link']})~~**\n\n"
+            title = f"**➤ [{title}]({x['link']})**\n" if not aired else f"**~~➤ [{title}]({x['link']})~~**\n"
         except KeyError:
-            title = f"**➤ [{title}]({x['link']})**\n\n"
+            title = f"**➤ [{title}]({x['link']})**\n"
         data = f"{title}"
 
         if k:
