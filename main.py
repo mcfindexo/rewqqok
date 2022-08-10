@@ -116,7 +116,7 @@ def udemyokb():
         title = o['title']
         link = o['link']
         try:
-            aired = bool(v['aired'])
+            aired = bool(o['aired'])
             title = f"**➤ [{title}]({o['link']})**\n" if not aired else f"**~~➤ [{title}]({o['link']})~~**\n"
         except KeyError:
             title = f"**➤ [{title}]({o['link']})**\n"
