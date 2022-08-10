@@ -116,20 +116,25 @@ def help(_,message):
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-print("""
-Running Speed test On My server
-""")
     m = message.reply("Runing Speedtest ..")
     speed = speedtest.Speedtest()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     m.edit("Get The best server")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     speed.get_best_server()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     m.edit("Runing Speedtest ..")
     speed.download()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     m.edit("Runing Speedtest .....")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     speed.upload()
     m.edit("Runing Speedtest ........")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     speedtest_image = speed.results.share()
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     m.edit("Wait ........")
+    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     m.edit("🚑")
     message.reply_photo(speedtest_image)
 
