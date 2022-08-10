@@ -112,11 +112,11 @@ def udemyokb():
     res = get(url).json()
 
     b = None
-    for x in res['results']:
-        title = x['title']
-        link = x['link']
+    for o in res['results']:
+        title = o['title']
+        link = o['link']
         try:
-            aired = bool(x['aired'])
+            aired = bool(v['aired'])
             title = f"**➤ [{title}]({o['link']})**\n" if not aired else f"**~~➤ [{title}]({o['link']})~~**\n"
         except KeyError:
             title = f"**➤ [{title}]({o['link']})**\n"
@@ -136,7 +136,7 @@ def udemyokc():
     res = get(url).json()
 
     c = None
-    for x in res['results']:
+    for v in res['results']:
         title = v['title']
         link = v['link']
         try:
