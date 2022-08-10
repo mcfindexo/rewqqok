@@ -90,9 +90,9 @@ def udemyokq():
     res = get(url).json()
 
     k = None
-    for x in res['schedule']:
+    for x in res['results']:
         title = x['title']
-        time = x['time']
+        link = x['link']
         try:
             aired = bool(x['aired'])
             title = f"**[{title}]({x['link']})**" if not aired else f"**~~[{title}]({x['link']})~~**"
