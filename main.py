@@ -116,11 +116,15 @@ def help(_,message):
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    message.reply_text('**__Running speed test . . .__**')
+    m = message.reply("Runing Speedtest ..")
     speed = speedtest.Speedtest()
+    m.edit("Get The best server")
     speed.get_best_server()
+    m.edit("Runing Speedtest ..")
     speed.download()
+    m.edit("Runing Speedtest .....")
     speed.upload()
+    m.edit("Runing Speedtest ........")
     speedtest_image = speed.results.share()
 
     message.reply_photo(speedtest_image)
@@ -144,6 +148,7 @@ async def jn(_,message):
         await sleep(fd.x + 2)
     except BaseException:
         pass	
+
 @bot.on_message(filters.command('request'))
 def req(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
