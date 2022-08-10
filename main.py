@@ -56,7 +56,7 @@ START_BUTTON = InlineKeyboardMarkup([[
 start_menu = ReplyKeyboardMarkup(
       [
             ["OWNER"],
-            ["𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"]
+            ["ᴛᴇʀʙᴜᴛ ғʀᴇᴇ ᴄᴏᴜʀᴤᴇᴤ"]
            
         ],
         resize_keyboard=True  # Make the keyboard smaller
@@ -126,7 +126,7 @@ def speedtest_(_,message):
     message.reply_photo(speedtest_image)
 
 
-@bot.on_message(filters.regex(pattern="𝗧𝗲𝗿𝗯𝘂𝘁 𝗳𝗿𝗲𝗲 𝗰𝗼𝘂𝗿𝘀𝗲𝘀"))   
+@bot.on_message(filters.regex(pattern="ᴛᴇʀʙᴜᴛ ғʀᴇᴇ ᴄᴏᴜʀᴤᴇᴤ"))   
 def startprivate(_,message):
      bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
      message.reply_text('**» 👋 We put udemy courses and other courses on terbut 😏. We work hard to bring stuff for YOU for FREE! Now you can help us return for FREE! . This Channel Is For Only Education Purpose 👩‍🎓, no one takes responsibility if you do anything wrong. We dont own any fuckin content here 🗒️.\n\n🏷️ Channel :- @terbut_freecourses**', reply_markup=CLOSE_BUTTON)
