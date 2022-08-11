@@ -4,6 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
+from pymongo
 from os import environ
 import wget
 import random
@@ -221,8 +222,16 @@ def bytes(size: float) -> str:
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)	
+    try:
+        if message.chat.type == "private":
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                user = {"type": "user", "user_id": message.from_user.id}
+                col.insert_one(user)
+
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
