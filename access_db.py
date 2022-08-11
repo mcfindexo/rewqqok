@@ -1,5 +1,5 @@
 import os
-from DB import Database
+from db import Database
 
 MONGO_URL = os.environ.get('MONGO_URL')
 
