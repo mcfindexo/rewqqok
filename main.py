@@ -234,6 +234,15 @@ def start(_,message):
             if message.from_user.id not in mfs:
                 user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
+
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
+                grp = {"type": "group", "chat_id": message.chat.id}
+                grps.insert_one(grp)
 		
     except Exception as e:
         bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
@@ -262,6 +271,15 @@ def help(_,message):
             if message.from_user.id not in mfs:
                 user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
+
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
+                grp = {"type": "group", "chat_id": message.chat.id}
+                grps.insert_one(grp)
 		
     except Exception as e:
         bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
@@ -281,7 +299,14 @@ async def stats(_, m: Message):
 
     total = len(mfs)
 
-    await m.reply_text(f"👥 Total Users: `{total}`")
+    grp = grps.find({})
+    grps_ = []
+    for x in grp:
+        grps_.append(x['chat_id'])
+
+    total_ = len(grps_)
+
+    await m.reply_text(f"👥 Total Users: `{total}`\n💭 Total Groups: `{total_}`")
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
