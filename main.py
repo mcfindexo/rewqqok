@@ -14,6 +14,7 @@ import asyncio
 from aiohttp import ClientSession
 from urllib.parse import quote
 from random import choice
+from pymongo import MongoClient
 from logging import basicConfig, INFO
 from pyrogram import enums
 from pyrogram.types import *
@@ -24,10 +25,6 @@ from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 from db import MONGO_URL as db_url
-
-users_db = MongoClient(db_url)['users']
-col = users_db['USER']
-grps = users_db['GROUPS']
 
 bot = Client(
     "notesbot",
@@ -42,6 +39,9 @@ owner = int(os.environ.get('OWNER'))
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "5363862546").split())
+users_db = MongoClient(db_url)['users']
+col = users_db['USER']
+grps = users_db['GROUPS']
 
 CLOSE_BUTTON = InlineKeyboardMarkup([[
                  InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="cloce")
