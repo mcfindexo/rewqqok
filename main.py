@@ -4,7 +4,6 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
-import pymongo
 from os import environ
 import wget
 import random
@@ -12,10 +11,11 @@ from json import dumps as jdumps
 from csv import writer
 from re import compile
 import asyncio
+from add_user import AddUserToDatabase
+from access_db import db
 from aiohttp import ClientSession
 from urllib.parse import quote
 from random import choice
-from pymongo import MongoClient
 from logging import basicConfig, INFO
 from pyrogram import enums
 from pyrogram.types import *
