@@ -3,5 +3,5 @@ tgcrypto
 speedtest-cli
 aiohttp[speedups]
 wget
-pymongo
+pymongo[srv]
 requests
