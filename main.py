@@ -238,7 +238,7 @@ async def help(_,message):
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    await message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`\n\n\n**Udemy CMDs 👩‍🎓\n\n➤ /udemya - Udemy Copon Finder v1\n➤ /udemyf - Udemy Copon Finder v1.4\n➤ /udemyc - Udemy Copon Finder v2\n➤ /udemyt - Udemy Copon Finder v2.5\n➤ /udemyr - Udemy Copon Finder v3\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**', reply_markup=CLOSE_BUTTON)
+    await message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`\n\n\n**Udemy CMDs 👩‍🎓\n\n➤ /udemya - Udemy Copon Finder 1\n➤ /udemyf - Udemy Copon Finder 2\n➤ /udemyc - Udemy Copon Finder 3\n➤ /udemyt - Udemy Copon Finder 4\n➤ /udemyr - Udemy Copon Finder 5\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
