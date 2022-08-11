@@ -269,6 +269,17 @@ def help(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`\n\n\n**Udemy CMDs 👩‍🎓\n\n➤ /udemya - Udemy Copon Finder v1\n➤ /udemyf - Udemy Copon Finder v1.4\n➤ /udemyc - Udemy Copon Finder v2\n➤ /udemyt - Udemy Copon Finder v2.5\n➤ /udemyr - Udemy Copon Finder v3\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**', reply_markup=CLOSE_BUTTON)
 
+@bot.on_message(filters.command("stats"))
+async def stats(_, m: Message):
+    users = col.find({})
+    mfs = []
+    for x in users:
+        mfs.append(x['user_id'])
+
+    total = len(mfs)
+
+    await m.reply_text(f"👥 Total Users: `{total}`")
+
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
