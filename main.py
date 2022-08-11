@@ -40,9 +40,6 @@ owner = int(os.environ.get('OWNER'))
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "5363862546").split())
-users_db = MongoClient(db_url)['users']
-col = users_db['USER']
-grps = users_db['GROUPS']
 
 CLOSE_BUTTON = InlineKeyboardMarkup([[
                  InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="cloce")
@@ -224,33 +221,17 @@ def bytes(size: float) -> str:
     return "{:.2f} {}B".format(size, power_dict[t_n])
 
 @bot.on_message(filters.command('start'))
-def start(_,message):
-    try:
-        if message.chat.type == "private":
-            users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
-            if message.chat.id not in mfs:
-                user = {"type": "user", "user_id": message.chat.id}
-                col.insert_one(user)
-
-        else:
-            users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
-            if message.chat.id not in mfs:
-                grp = {"type": "group", "chat_id": message.chat.id}
-                grps.insert_one(grp)
+async def start(_,message):
+    await AddUserToDatabase(bot, update)
+    total_users = await db.total_users_count()
 		
     except Exception as e:
-        bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
+        await bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
 
-    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
-    bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
-    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
+    await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
     reply_markup = START_BUTTON
     message.reply_text(
@@ -261,52 +242,18 @@ def start(_,message):
     )
     
 @bot.on_message(filters.command('help'))
-def help(_,message):
-    try:
-        if message.chat.type == "private":
-            users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
-            if message.chat.id not in mfs:
-                user = {"type": "user", "user_id": message.chat.id}
-                col.insert_one(user)
-
-        else:
-            users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
-            if message.chat.id not in mfs:
-                grp = {"type": "group", "chat_id": message.chat.id}
-                grps.insert_one(grp)
+async def help(_,message):
+    await AddUserToDatabase(bot, update)
+    total_users = await db.total_users_count()
 		
     except Exception as e:
-        bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
+            await bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
 	
-    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
-    bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
-    bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`\n\n\n**Udemy CMDs 👩‍🎓\n\n➤ /udemya - Udemy Copon Finder v1\n➤ /udemyf - Udemy Copon Finder v1.4\n➤ /udemyc - Udemy Copon Finder v2\n➤ /udemyt - Udemy Copon Finder v2.5\n➤ /udemyr - Udemy Copon Finder v3\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**', reply_markup=CLOSE_BUTTON)
-
-@bot.on_message(filters.command("stats"))
-async def stats(_, m: Message):
-    users = col.find({})
-    mfs = []
-    for x in users:
-        mfs.append(x['user_id'])
-
-    total = len(mfs)
-
-    grp = grps.find({})
-    grps_ = []
-    for x in grp:
-        grps_.append(x['chat_id'])
-
-    total_ = len(grps_)
-
-    await m.reply_text(f"👥 Total Users: `{total}`\n💭 Total Groups: `{total_}`")
+    await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
+    await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    await message.reply_text('**💯 If you want, you can contact us using this format** \n\n**More CMDs 🍀\n\n➤ /info - To know ur info\n➤ /sk - SK Key Check\n➤ /bin - Bin lookup\n\nMain CMDs 😏\n\n➤ /request - Request Your need\n\nExample :- **\n`/request Hello, I need a help`\n\n\n**Udemy CMDs 👩‍🎓\n\n➤ /udemya - Udemy Copon Finder v1\n➤ /udemyf - Udemy Copon Finder v1.4\n➤ /udemyc - Udemy Copon Finder v2\n➤ /udemyt - Udemy Copon Finder v2.5\n➤ /udemyr - Udemy Copon Finder v3\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**', reply_markup=CLOSE_BUTTON)
 
 @bot.on_message(filters.command("speedtest"))
 def speedtest_(_,message):
