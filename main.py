@@ -268,8 +268,8 @@ def help(_,message):
             mfs = []
             for x in users:
                 mfs.append(x['user_id'])
-            if message.from_user.id not in mfs:
-                user = {"type": "user", "user_id": message.from_user.id}
+            if message.chat.id not in mfs:
+                user = {"type": "user", "user_id": message.chat.id}
                 col.insert_one(user)
 
         else:
