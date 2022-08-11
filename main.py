@@ -11,8 +11,6 @@ from json import dumps as jdumps
 from csv import writer
 from re import compile
 import asyncio
-from add_user import AddUserToDatabase
-from access_db import db
 from aiohttp import ClientSession
 from urllib.parse import quote
 from random import choice
@@ -221,16 +219,13 @@ def bytes(size: float) -> str:
 
 @bot.on_message(filters.command('start'))
 async def start(_,message):
-    await AddUserToDatabase(bot, update)
-    total_users = await db.total_users_count()
-
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
     reply_markup = START_BUTTON
-    message.reply_text(
+    await message.reply_text(
         text=text,
         reply_markup=reply_markup,
         disable_web_page_preview=True,
@@ -239,9 +234,6 @@ async def start(_,message):
     
 @bot.on_message(filters.command('help'))
 async def help(_,message):
-    await AddUserToDatabase(bot, update)
-    total_users = await db.total_users_count()
-
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
