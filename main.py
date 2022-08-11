@@ -4,7 +4,7 @@ from pyrogram.types.bots_and_keyboards import callback_game
 from typing import List, Any
 from pyrogram.types import Message
 import os
-from pymongo
+import pymongo
 from os import environ
 import wget
 import random
