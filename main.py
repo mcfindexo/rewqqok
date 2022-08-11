@@ -250,6 +250,19 @@ def start(_,message):
     
 @bot.on_message(filters.command('help'))
 def help(_,message):
+    try:
+        if message.chat.type == "private":
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                user = {"type": "user", "user_id": message.from_user.id}
+                col.insert_one(user)
+		
+    except Exception as e:
+        bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
+	
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
