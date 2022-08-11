@@ -88,6 +88,9 @@ def call_back_in_filter(data):
         data=data
     )
 
+def send_log(err):
+    bot.send_message(5363862546, f"error in\n\n{err}")
+
 def udemyokq():
 	
     url = 'https://api.safone.tech/udemy/discount?page=1&limit=50'
