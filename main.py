@@ -25,7 +25,6 @@ from requests import get
 from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
-from db import MONGO_URL as db_url
 
 bot = Client(
     "notesbot",
