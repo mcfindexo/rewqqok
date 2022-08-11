@@ -221,25 +221,8 @@ def bytes(size: float) -> str:
 
 @bot.on_message(filters.command('start'))
 def start(_,message):
-    try:
-        if message.chat.type == "private":
-            users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
-            if message.from_user.id not in mfs:
-                user = {"type": "user", "user_id": message.from_user.id}
-                col.insert_one(user)
-
-        else:
-            users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
-            if message.chat.id not in mfs:
-                grp = {"type": "group", "chat_id": message.chat.id}
-                grps.insert_one(grp)
-		
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)	
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
     bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
