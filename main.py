@@ -224,9 +224,6 @@ def bytes(size: float) -> str:
 async def start(_,message):
     await AddUserToDatabase(bot, update)
     total_users = await db.total_users_count()
-		
-    except Exception as e:
-        await bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
 
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
@@ -245,10 +242,7 @@ async def start(_,message):
 async def help(_,message):
     await AddUserToDatabase(bot, update)
     total_users = await db.total_users_count()
-		
-    except Exception as e:
-            await bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
-	
+
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
