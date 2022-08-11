@@ -23,6 +23,11 @@ from requests import get
 from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
+from db import MONGO_URL as db_url
+
+users_db = MongoClient(db_url)['users']
+col = users_db['USER']
+grps = users_db['GROUPS']
 
 bot = Client(
     "notesbot",
