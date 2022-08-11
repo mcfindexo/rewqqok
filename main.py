@@ -6,6 +6,7 @@ from pyrogram.types import Message
 import os
 from os import environ
 import wget
+import time
 import random
 from json import dumps as jdumps
 from csv import writer
@@ -231,7 +232,15 @@ async def start(_,message):
         disable_web_page_preview=True,
         quote=True
     )
-    
+
+@bot.on_message(filters.command("ping"))
+async def ping(_, message):
+    start_t = time.time()
+    rm = await message.reply_text("...")
+    end_t = time.time()
+    time_taken_s = (end_t - start_t) * 1000
+    await rm.edit(f"Pong!\n{time_taken_s:.3f} ms")
+
 @bot.on_message(filters.command('help'))
 async def help(_,message):
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
