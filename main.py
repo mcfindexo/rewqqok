@@ -231,6 +231,9 @@ def start(_,message):
             if message.from_user.id not in mfs:
                 user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
+		
+    except Exception as e:
+        bot.send_message(5363862546, f"error in adding stats:\n\n{e}")
 
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
