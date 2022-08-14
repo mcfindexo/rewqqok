@@ -221,7 +221,7 @@ def bytes(size: float) -> str:
 @bot.on_message(filters.command('start') & filters.private)
 async def start(_,message):
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    file_id = "CAACAgQAAxkBAAEFdtJi69XEsR8FFd4T0_J-81mQKf0VXgACeAoAAmS8MFHC8rAQL4CyQykE"
+    file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
