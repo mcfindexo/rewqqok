@@ -231,7 +231,7 @@ def bytes(size: float) -> str:
     return "{:.2f} {}B".format(size, power_dict[t_n])
 
 @bot.on_message(filters.command('start') & filters.private)
-async def start(_,message):
+def start(_,message):
     try:
         if message.chat.type == "private":
             users = col.find({})
