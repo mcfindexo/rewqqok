@@ -257,12 +257,12 @@ def start(_, message):
     if not message.chat.type == "private":
 
        bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
-       file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
+       file_id = "CAACAgQAAxkBAAEFjupi-LrptY52tiIle-40kdVvHFzzBAACeAoAAmS8MFHC8rAQL4CyQykE"
        bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
        bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
        text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
        reply_markup = START_BUTTON
-       message.reply_text(
+       bot.send_message(
 	      message.from_user.id,
               text=text,
               reply_markup=reply_markup,
