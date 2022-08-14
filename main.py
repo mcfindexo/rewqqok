@@ -245,6 +245,8 @@ async def start(_,message):
     except Exception as e:
         bot.send_message(message.chat.id, f"error in adding stats:\n\n{e}")
 
+    if message.chat.type == "private":
+
        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
        file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
        bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
