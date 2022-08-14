@@ -251,7 +251,7 @@ async def help(_,message):
 
 @bot.on_message(filters.private & filters.sticker)
 async def sticker(_, message):
- await message.reply(messags.sticker.file_id)
+ await bot.reply_text(messags.sticker.file_id)
 
 @bot.on_message(filters.regex("@MyzoneMy"))
 async def myzoone(_, message):
