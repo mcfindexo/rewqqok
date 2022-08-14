@@ -262,8 +262,15 @@ async def start(_, message):
        await bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
        end_t = time.time()
        time_taken_s = (end_t - start_t) * 1000
+	
+       users = col.find({})
+       mfs = []
+       for x in users:
+           mfs.append(x['user_id'])
+
+       total = len(mfs)
        await bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
-       text = f"**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\nPing {time_taken_s:.3f} ms\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
+       text = f"**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\nPing {time_taken_s:.3f} ms\n📊 **Users** : `{total}`\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
        reply_markup = START_BUTTON
        await message.reply_text(
               text=text,
