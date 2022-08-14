@@ -231,7 +231,7 @@ def bytes(size: float) -> str:
     return "{:.2f} {}B".format(size, power_dict[t_n])
 
 @bot.on_message(filters.command('start') & filters.private)
-def start(_, message):
+async def start(_, message):
     try:
         if message.chat.type == "private":
             users = col.find({})
@@ -252,18 +252,17 @@ def start(_, message):
                 grps.insert_one(grp)
 
     except Exception as e:
-        bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
+        await bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
 
     if not message.chat.type == "private":
 
-       bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
+       await bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
        file_id = "CAACAgQAAxkBAAEFjupi-LrptY52tiIle-40kdVvHFzzBAACeAoAAmS8MFHC8rAQL4CyQykE"
-       bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
-       bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
+       await bot.send_sticker(message.from_user.id, file_id, reply_markup=start_menu)
+       await bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
        text = "**🔥𝓗𝓲 𝓣𝓱𝓮𝓻𝓮 ,\n\n✅ 24 нoυr αcтιve ✓ \n⚡️ ѕυper ғαѕт reѕpoɴѕe ✓ \n\nѕerver  : нeroĸυ\nlιвrαry : pyroɢrαм\n\n/help for More Information\n\n☘️ Dᴇᴠᴇʟᴏᴘᴇʀ : @MyzoneMy\n\n🤖 вy υѕιɴɢ oυr ѕervιce yoυ мυѕт αɢree тo oυr prιvαcy polιcy 👀**"
        reply_markup = START_BUTTON
-       message.reply_text(
-	      message.from_user.id,
+       await message.reply_text(
               text=text,
               reply_markup=reply_markup,
               disable_web_page_preview=True,
@@ -272,10 +271,10 @@ def start(_, message):
 
     if message.chat.type == "private" and not "help" in message.text:
 		
-        message.reply("Hello there")
+        await message.reply("Hello there")
 
     if "help" in message.text:
-        bot.send_message(message.chat.id,
+        await bot.send_message(message.chat.id,
                          "Test",
                          reply_markup=InlineKeyboardMarkup([[
                              InlineKeyboardButton('Close', callback_data="cloce")
