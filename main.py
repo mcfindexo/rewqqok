@@ -234,15 +234,6 @@ def bytes(size: float) -> str:
 async def start(_, message):
     try:
         if message.chat.type == "private":
-            users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
-            if message.from_user.id not in mfs:
-                user = {"type": "user", "user_id": message.from_user.id}
-                col.insert_one(user)
-
-        else:
             users = grps.find({})
             mfs = []
             for x in users:
@@ -250,6 +241,15 @@ async def start(_, message):
             if message.chat.id not in mfs:
                 grp = {"type": "group", "chat_id": message.chat.id}
                 grps.insert_one(grp)
+
+        else:
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                user = {"type": "user", "user_id": message.from_user.id}
+                col.insert_one(user)
 
     except Exception as e:
         await bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
