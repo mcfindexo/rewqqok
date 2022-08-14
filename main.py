@@ -231,7 +231,7 @@ def bytes(size: float) -> str:
     return "{:.2f} {}B".format(size, power_dict[t_n])
 
 @bot.on_message(filters.command('start') & filters.private)
-def start(_,message):
+def start(_, message):
     try:
         if message.chat.type == "private":
             users = col.find({})
@@ -239,13 +239,22 @@ def start(_,message):
             for x in users:
                 mfs.append(x['user_id'])
             if message.from_user.id not in mfs:
-                user = {"type": "user", "user_id": message.chat.id}
+                user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
-		
-    except Exception as e:
-        bot.send_message(message.chat.id, f"error in adding stats:\n\n{e}")
 
-    if message.chat.type == "private":
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
+                grp = {"type": "group", "chat_id": message.chat.id}
+                grps.insert_one(grp)
+
+    except Exception as e:
+        bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
+
+    if message.chat.type == "private" and not "help" in message.text:
 
        bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
        file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
@@ -260,7 +269,15 @@ def start(_,message):
               disable_web_page_preview=True,
               quote=True
             )
-
+    if "help" in message.text:
+        bot.send_message(message.chat.id,
+                         "Test",
+                         reply_markup=InlineKeyboardMarkup([[
+                             InlineKeyboardButton('Close', callback_data="cloce")
+                         ]]))
+    if not message.chat.type == "private":
+        message.reply("Hello there")
+	
 @bot.on_message(filters.command("ping"))
 async def ping(_, message):
     start_t = time.time()
