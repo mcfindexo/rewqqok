@@ -38,6 +38,9 @@ owner = int(os.environ.get('OWNER'))
 HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
 HEROKU_API_KEY = os.environ.get('HEROKU_API_KEY')
 AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "5363862546").split())
+users_db = MongoClient(db_url)['users']
+col = users_db['USER']
+grps = users_db['GROUPS']
 
 CLOSE_BUTTON = InlineKeyboardMarkup([[
                  InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="cloce")
@@ -220,6 +223,30 @@ def bytes(size: float) -> str:
 
 @bot.on_message(filters.command('start') & filters.private)
 async def start(_,message):
+    try:
+        if message.chat.type == "private":
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if message.from_user.id not in mfs:
+                user = {"type": "user", "user_id": message.from_user.id}
+                col.insert_one(user)
+
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
+                grp = {"type": "group", "chat_id": message.chat.id}
+                grps.insert_one(grp)
+
+    except Exception as e:
+        bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
+
+    if message.chat.type == "private":
+	
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
     file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
     await bot.send_sticker(message.chat.id, file_id, reply_markup=start_menu)
@@ -232,6 +259,9 @@ async def start(_,message):
         disable_web_page_preview=True,
         quote=True
     )
+    
+    if not message.chat.type == "private":
+    await message.reply("Hello there")
 
 @bot.on_message(filters.command("ping"))
 async def ping(_, message):
