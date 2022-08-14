@@ -7,6 +7,7 @@ import os
 from os import environ
 import wget
 import time
+import logging
 import random
 from db import MONGO_URL as db_url
 from pymongo import MongoClient
@@ -26,6 +27,12 @@ from requests import get
 from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+
+LOGGER = logging.getLogger(__name__)
 
 bot = Client(
     "notesbot",
