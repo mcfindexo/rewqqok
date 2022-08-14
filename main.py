@@ -263,7 +263,7 @@ async def start(_,message):
             )
     
     if not message.chat.type == "private":
-       message.reply("Hello there")
+       Message.reply_text("Hello there")
 
 @bot.on_message(filters.command("ping"))
 async def ping(_, message):
