@@ -234,16 +234,7 @@ async def start(_,message):
             if message.from_user.id not in mfs:
                 user = {"type": "user", "user_id": message.from_user.id}
                 col.insert_one(user)
-
-        else:
-            users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
-            if message.chat.id not in mfs:
-                grp = {"type": "group", "chat_id": message.chat.id}
-                grps.insert_one(grp)
-
+		
     except Exception as e:
         bot.send_message(message.from_user.id, f"error in adding stats:\n\n{e}")
 
