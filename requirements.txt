@@ -1,4 +1,4 @@
-pyrogram
+Pyrogram==2.0.28
 tgcrypto
 speedtest-cli
 aiohttp[speedups]
