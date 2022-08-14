@@ -254,7 +254,7 @@ def start(_, message):
     except Exception as e:
         bot.send_message(-1001646296281, f"error in adding stats:\n\n{e}")
 
-    if message.chat.type == "private" and not "help" in message.text:
+    if not message.chat.type == "private":
 
        bot.send_chat_action(message.from_user.id, enums.ChatAction.TYPING)
        file_id = "CAACAgIAAxkBAAEFjtZi-KftiY8llgvf-3T29MgmuMKBBQACAR4AArk8OUjrraQbd6DLgikE"
@@ -269,15 +269,17 @@ def start(_, message):
               disable_web_page_preview=True,
               quote=True
             )
+
+    if message.chat.type == "private" and not "help" in message.text:
+		
+        message.reply("Hello there")
+
     if "help" in message.text:
         bot.send_message(message.chat.id,
                          "Test",
                          reply_markup=InlineKeyboardMarkup([[
                              InlineKeyboardButton('Close', callback_data="cloce")
                          ]]))
-    if not message.chat.type == "private":
-        message.reply("Hello there")
-	
 @bot.on_message(filters.command("ping"))
 async def ping(_, message):
     start_t = time.time()
