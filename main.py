@@ -275,7 +275,7 @@ async def ping(_, message):
 
 @bot.on_message(filters.command('help'))
 async def help(_,message):
-    await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    await bot.send_chat_action(message.from.user.id, enums.ChatAction.TYPING)
     file_id = "CAACAgQAAxkBAAEFdtZi69d1MsRVHw2KZwZ5IvJ7c7Mf2gACbAADX8YBGfSF62Bv9XlaKQQ"
     await bot.send_sticker(message.chat.id, file_id)
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
