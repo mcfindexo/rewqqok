@@ -9,6 +9,7 @@ import wget
 import time
 import random
 from db import MONGO_URL as db_url
+from pymongo import MongoClient
 from json import dumps as jdumps
 from csv import writer
 from re import compile
