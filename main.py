@@ -424,6 +424,7 @@ async def jn(_,message):
 def udemyq(_, message):
     message.reply_text("⚡️")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
+    bot.answer("Closed 🚀")
     mb = message.reply_text("**🔎 Wait for result . . . . . .**")
     yq = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
@@ -502,7 +503,6 @@ def botreq(_,query):
 @bot.on_callback_query()
 async def semdd(_, query):
     if query.data == "cloce":
-	await query.answer('Closed 🚀')
         await query.message.delete()
         
 
