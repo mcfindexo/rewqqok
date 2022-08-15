@@ -424,7 +424,7 @@ async def jn(_,message):
 def udemyq(_, message):
     message.reply_text("⚡️")
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
-    bot.answer("Closed 🚀")
+    bot.answer("Wait 🚀")
     mb = message.reply_text("**🔎 Wait for result . . . . . .**")
     yq = udemyokq()
     bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
