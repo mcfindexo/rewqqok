@@ -336,6 +336,11 @@ async def ping(_, message):
     time_taken_s = (end_t - start_t) * 1000
     await rm.edit(f"Pong!\n{time_taken_s:.3f} ms")
 
+@Client.on_message(filters.media & filters.channel)
+async def caption(_, message):
+    kopp, _ = get_file_id(message)
+    await message.edit(f"**ɴᴀᴍᴇ ᴏғ ғɪʟᴇ :- {kopp.file_name}**\n\n**┣ 🌵 @terbut_freecourses 〽️**")
+	
 @bot.on_message(filters.command('help'))
 async def help(_,message):
     await bot.send_chat_action(message.chat.id, enums.ChatAction.TYPING)
