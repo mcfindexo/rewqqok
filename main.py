@@ -502,6 +502,7 @@ def botreq(_,query):
 async def semdd(_, query):
     if query.data == "cloce":
         await query.message.delete()
+	await query.answer("Closed 🚀")
         
 
 print("""
