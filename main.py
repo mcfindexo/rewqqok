@@ -98,6 +98,26 @@ def call_back_in_filter(data):
 def send_log(err):
     bot.send_message(5363862546, f"error in\n\n{err}")
 
+def get_file_id(msg: Message):
+    if msg.media:
+        for message_type in (
+            "animation",
+            "audio",
+            "document",
+            "video",
+            "video_note",
+            "voice",
+            # "contact",
+            # "dice",
+            # "poll",
+            # "location",
+            # "venue",
+            "sticker"
+        ):
+            obj = getattr(msg, message_type)
+            if obj:
+                return obj, obj.file_id
+	
 def udemyokq():
 	
     url = 'https://api.safone.tech/udemy/discount?page=1&limit=50'
