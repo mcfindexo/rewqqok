@@ -28,12 +28,14 @@ from requests import get
 from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
+from dotenv import load_dotenv
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 
 LOGGER = logging.getLogger(__name__)
+load_dotenv('.env')
 
 bot = Client(
     "notesbot",
