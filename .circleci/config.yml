@@ -39,6 +39,10 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: '16.13'
+          
+      - run:
+         name: upgrade
+         command: sudo apt list --upgradable
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
