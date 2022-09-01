@@ -10,6 +10,7 @@ import wget
 import time
 import logging
 import random
+import emoji
 from db import MONGO_URL as db_url
 from pymongo import MongoClient
 from json import dumps as jdumps
@@ -29,6 +30,9 @@ from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 from dotenv import load_dotenv
+from google_trans_new import google_translator
+url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
+BOT_ID = 5327291162
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
