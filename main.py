@@ -357,7 +357,7 @@ async def myzoone(_, message):
     file_id = "CAACAgUAAxkBAAIxfWL4pIISnnkZ4x99yS1QaWTj2dHBAAKLBgAC4b6JVmiOayOiYZeAHgQ"
     await bot.send_sticker(message.chat.id, file_id)
 
-@Client.on_message(filters.command("hack"))
+@bot.on_message(filters.command("hack"))
 async def hak(_, message):
   h = await message.reply_text("Looking for WhatsApp databases in targeted person...")
   asyncio.sleep(2)
