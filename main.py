@@ -30,9 +30,6 @@ from datetime import datetime
 from pyrogram.errors import *
 from pyrogram.errors.exceptions.bad_request_400 import *
 from dotenv import load_dotenv
-from google_trans_new import google_translator
-url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
-BOT_ID = 5327291162
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
